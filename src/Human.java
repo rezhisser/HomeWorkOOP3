@@ -39,6 +39,11 @@ public abstract class Human {
 	public void setSecondName(String secondName) {
 		this.secondName = secondName;
 	}
+	@Override
+	public String toString() {
+		return "Human [age=" + age + ", gender=" + gender + ", firstName=" + firstName + ", secondName=" + secondName
+				+ "]";
+	}
 	
 	
 

@@ -23,6 +23,12 @@ public class Student extends Human{
 	public void setCourse(int course) {
 		this.course = course;
 	}
+	@Override
+	public String toString() {
+		return "Student [group=" + group + ", course=" + course + ", getAge()=" + getAge() + ", getGender()="
+				+ getGender() + ", getFirstName()=" + getFirstName() + ", getSecondName()=" + getSecondName() + "]";
+	}
+
 	
 
 	

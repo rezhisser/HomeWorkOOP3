@@ -43,6 +43,12 @@ public class Student extends Human{
 		if (cr == cr.Age){
 			return this.age==value;
 			}
+		else if (cr == cr.Kurs){
+			return this.course==value;
+		}
+		else if (cr == cr.Group){
+			return this.group==value;
+		}
 		 else return false;
 	}
 	@Override

@@ -1,6 +1,6 @@
 
 public enum CriterionSortSearch {
-	FirstName, SecondName, Kurs, Gender, Age
+	FirstName, SecondName, Kurs, Gender, Age, Group
 }
 
 

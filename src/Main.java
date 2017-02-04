@@ -13,7 +13,7 @@ public class Main {
 		Student st4 = new Student(2, "female", "Vlada", "Ivanenko", 5, 5);
 		Student st5 = new Student(23, "male", "Ivan", "Bojko", 5, 5);
 		Student st6 = new Student(18, "female", "Tanya", "Prihodko", 5, 5);
-		Student st7 = new Student(16, "female", "Kate", "Gopkalo", 5, 5);
+		Student st7 = new Student(18, "female", "Kate", "Gopkalo", 5, 5);
 		Student st8 = new Student(19, "male", "Vadym", "Lubatsky", 5, 5);
 		Student st9 = new Student(8, "female", "Irina", "Khivrenko", 5, 5);
 		Student st10 = new Student(1, "male", "Vadym", "Shevchnko", 5, 5);
@@ -43,7 +43,8 @@ public class Main {
 		gr.delFromGroup(st1);
 		
 		System.out.println(gr);		
-		System.out.println("search" + gr.searchStudent("Petrenk", CriterionSortSearch.SecondName));
+		System.out.println("search - " + Arrays.toString(gr.searchStudent("Petrenk", CriterionSortSearch.SecondName)));
+		System.out.println("search - " + Arrays.toString(gr.searchStudent(18, CriterionSortSearch.Age)));
 		
 		gr.sort();
 		

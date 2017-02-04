@@ -42,15 +42,50 @@ public class Group implements RecruitingOfficer {
 		
 	}
 	
-	protected Student searchStudent (String str, CriterionSortSearch cr){
+	protected Student [] searchStudent (String str, CriterionSortSearch cr){
 		
-		Student student = null;
+		int count = 0;
+		try {
 		for (int i = 0; i < st.length; i++) {
 			if(st[i] != null && st[i].equals(str, cr)){
-				student = st[i];
+				count++;
 			}
 		}
-		return student;
+		if (count == 0)	throw new MyExeption();
+			} catch (MyExeption e) {
+				System.out.println("Нет такого студента - критерий: " + str + " / " + cr);
+			}
+		Student stud [] = new Student [count];
+		for (int i = 0; i < stud.length;) {
+			for (int j = 0; j < st.length; j++) {
+				if(st[j] != null && st[j].equals(str, cr)){
+					stud[i] = st[j];
+					i++;
+				}
+			}
+		}
+		return stud;
+		
+	}
+	
+	protected Student [] searchStudent (int value, CriterionSortSearch cr){
+
+		int count = 0;
+		for (int i = 0; i < st.length; i++) {
+			if(st[i] != null && st[i].equals(value, cr)){
+				count++;
+			}
+		}
+		Student stud [] = new Student [count];
+		for (int i = 0; i < stud.length;) {
+			for (int j = 0; j < st.length; j++) {
+				if(st[j] != null && st[j].equals(value, cr)){
+					stud[i] = st[j];
+					i++;
+				}
+			}
+		}
+		return stud;
 		
 	}
 	

@@ -21,35 +21,36 @@ public class Group implements RecruitingOfficer {
 
 
 
-	protected void addToGroup (Student a){
+	protected void addStudent (Student student){
 		for (int i = 0; i < st.length+1; i++) {
 			if(st[i] != null){
 				continue;
 			}
 			if (st[i]==null)
-				st[i] = a;
+				st[i] = student;
 			return;
 
 		}
 
 	}
-	protected void delFromGroup (Student a){
+	protected void delFromGroup (Student student){
 		for (int i = 0; i < st.length; i++) {
-			if(st[i] == a){
+			if(st[i].equals(student) && st[i] != null){
 				st[i] = null;
 			}
 		}
 		
 	}
 	
-	protected Student searchStudent (String str){
-		Student a = null;
+	protected Student searchStudent (String str, CriterionSortSearch cr){
+		
+		Student student = null;
 		for (int i = 0; i < st.length; i++) {
-			if(st[i] != null && st[i].getSecondName().equals(str)){
-				a = st[i];
+			if(st[i] != null && st[i].equals(str, cr)){
+				student = st[i];
 			}
 		}
-		return a;
+		return student;
 		
 	}
 	
@@ -57,7 +58,7 @@ public class Group implements RecruitingOfficer {
 		Arrays.sort(st,(a,b) ->chekNull(a,b)==2?a.getSecondName().compareTo(b.getSecondName()):chekNull(a,b));
 	}
 	
-	protected void sort (CriterionSort cr){
+	protected void sort (CriterionSortSearch cr){
 		if (cr == cr.FirstName){
 			Arrays.sort(st,(a,b) ->chekNull(a,b)==2?a.getFirstName().compareTo(b.getFirstName()):chekNull(a,b));
 		}
@@ -91,7 +92,7 @@ public class Group implements RecruitingOfficer {
 		int count = 0;
 		for (int i = 0; i < st.length; i++) {
 			
-			if (st[i].getAge() >= 18){
+			if (st[i] != null && st[i].getAge() >= 18){
 				count ++;
 			}
 			
@@ -100,7 +101,7 @@ public class Group implements RecruitingOfficer {
 		Student stud [] = new Student [count];
 		for (int i = 0; i < stud.length; ) {
 			for (int j = 0; j < st.length; j++) {
-				if (st[j].getAge() >= 18){
+				if (st[i] != null && st[j].getAge() >= 18){
 					stud[i] = st[j];
 					i++;
 				}

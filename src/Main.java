@@ -22,28 +22,28 @@ public class Main {
 		
 		Group gr = new Group();
 		try{
-		gr.addToGroup(st1);
-		gr.addToGroup(st2);
-		gr.addToGroup(st3);
-		gr.addToGroup(st4);
-		gr.addToGroup(st5);
-		gr.addToGroup(st6);
-		gr.addToGroup(st7);
-		gr.addToGroup(st8);
-		gr.addToGroup(st9);
-		gr.addToGroup(st10);
+		gr.addStudent(st1);
+		gr.addStudent(st2);
+		gr.addStudent(st3);
+		gr.addStudent(st4);
+		gr.addStudent(st5);
+		gr.addStudent(st6);
+		gr.addStudent(st7);
+		gr.addStudent(st8);
+		gr.addStudent(st9);
+		gr.addStudent(st10);
 		
-		gr.addToGroup(st11);
+		gr.addStudent(st11);
 		}
 		catch(ArrayIndexOutOfBoundsException e){
 			System.out.println("больше 10 нельзя");
 		}
 		
-	//	gr.delFromGroup(st1);
+		gr.delFromGroup(st1);
 	//	gr.delFromGroup(st1);
 		
 		System.out.println(gr);		
-		System.out.println(gr.searchStudent("Petrenko"));
+		System.out.println("search" + gr.searchStudent("Petrenk", CriterionSortSearch.SecondName));
 		
 		gr.sort();
 		
@@ -51,13 +51,13 @@ public class Main {
 		
 		
 		
-		gr.sort(CriterionSort.Age);
+		gr.sort(CriterionSortSearch.Age);
 		System.out.println(gr);
 		
-		gr.sort(CriterionSort.FirstName);
+		gr.sort(CriterionSortSearch.FirstName);
 		System.out.println(gr);
 		
-		System.out.println("18+ - " + Arrays.toString(gr.getStudetn18()));
+		System.out.println("getStudentForRecruitingOfficer - " + Arrays.toString(gr.getStudetn18()));
 		
 		
 		

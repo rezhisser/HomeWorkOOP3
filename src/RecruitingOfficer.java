@@ -1,6 +1,6 @@
 
 public interface RecruitingOfficer {
 	
-	Student [] getStudetn18();
+	Student [] getStudetnForRecruitingOfficer();
 
 }

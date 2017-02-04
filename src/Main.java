@@ -39,8 +39,8 @@ public class Main {
 			System.out.println("больше 10 нельзя");
 		}
 		
+	//	gr.delFromGroup(st10);
 		gr.delFromGroup(st1);
-	//	gr.delFromGroup(st1);
 		
 		System.out.println(gr);		
 		System.out.println("search" + gr.searchStudent("Petrenk", CriterionSortSearch.SecondName));
@@ -57,7 +57,9 @@ public class Main {
 		gr.sort(CriterionSortSearch.FirstName);
 		System.out.println(gr);
 		
-		System.out.println("getStudentForRecruitingOfficer - " + Arrays.toString(gr.getStudetn18()));
+		System.out.println("***");
+		
+		System.out.println("getStudentForRecruitingOfficer - " + Arrays.toString(gr.getStudetnForRecruitingOfficer()));
 		
 		
 		

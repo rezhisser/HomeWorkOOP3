@@ -88,20 +88,25 @@ public class Group implements RecruitingOfficer {
 	}
 
 	@Override
-	public Student[] getStudetn18() {
+	public Student[] getStudetnForRecruitingOfficer() {
+		
+		//считаем, сколько студентов удовлетворяют критерию 18+
 		int count = 0;
 		for (int i = 0; i < st.length; i++) {
-			
-			if (st[i] != null && st[i].getAge() >= 18){
+			if (st[i] == null){
+				continue;
+			}
+			else if (st[i].getAge() >= 18){
 				count ++;
 			}
 			
 		}
+		System.out.println(count);
 		
 		Student stud [] = new Student [count];
 		for (int i = 0; i < stud.length; ) {
 			for (int j = 0; j < st.length; j++) {
-				if (st[i] != null && st[j].getAge() >= 18){
+				if (st[j] != null && st[j].getAge() >= 18){
 					stud[i] = st[j];
 					i++;
 				}

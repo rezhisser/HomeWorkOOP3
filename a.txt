@@ -1,0 +1,8 @@
+5;5;8;female;Irina;Khivrenko;
+5;5;23;male;Ivan;Bojko;
+5;5;18;female;Kate;Gopkalo;
+5;5;21;male;Oleg;Petrenko;
+5;5;12;female;Olga;Khivrenko;
+5;5;18;female;Tanya;Prihodko;
+5;5;19;male;Vadym;Lubatsky;
+5;5;2;female;Vlada;Ivanenko;

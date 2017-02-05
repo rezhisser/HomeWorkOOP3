@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 
 public class Group implements RecruitingOfficer {
@@ -35,7 +40,7 @@ public class Group implements RecruitingOfficer {
 	}
 	protected void delFromGroup (Student student){
 		for (int i = 0; i < st.length; i++) {
-			if(st[i].equals(student) && st[i] != null){
+			if(st[i] != null && st[i].equals(student)){
 				st[i] = null;
 			}
 		}
@@ -150,6 +155,69 @@ public class Group implements RecruitingOfficer {
 		
 		return stud;
 	}
+	
+    public void SaveToFile(String path) throws FileNotFoundException {
+        try (PrintWriter pw = new PrintWriter(path)) {
+            for (Student student : st) {
+            	if(student != null){
+    			pw.print(student.getGroup() + ";");
+    			pw.print(student.getCourse() + ";");
+    			pw.print(student.getAge() + ";");
+    			pw.print(student.getGender() + ";");
+    			pw.print(student.getFirstName() + ";");
+    			pw.print(student.getSecondName() + ";");
+    			pw.println();
+            	}
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println();
+        }
+    }
+    
+    public void LoadFile (String path, Group gr){
+    	
+    	try(BufferedReader f =new BufferedReader(new FileReader(path))){
+    			String str="";
+    			String[] tmp;
+    			for(;(str=f.readLine())!=null;){
+    				Student tmpStud = new Student();
+                    tmp = str.split(";");
+                    tmpStud.setGroup(Integer.parseInt(tmp[0]));
+                    tmpStud.setCourse(Integer.parseInt(tmp[1]));
+                    tmpStud.setAge(Integer.parseInt(tmp[2]));
+                    tmpStud.setGender((tmp[3]));
+                    tmpStud.setFirstName((tmp[4]));
+                    tmpStud.setSecondName((tmp[5]));
+                    gr.addStudent(tmpStud);
+    			}
+    			
+    			}
+    			catch(IOException e){
+    			System.out.println("ERROR");
+    			}
+    }
+    
+    protected String [] GetElementStringLine (String str){
+    	int count = 0;
+		for (char string : str.toCharArray()) {
+			if(string == ';'){
+				count++;
+			}
+			
+		}
+		String [] tmpstr = new String[count];
+		
+		for (int i = 0; i < count; i++) {
+			int index = str.indexOf(';');
+			String substr = str.substring(0, index);
+			tmpstr[i]=substr;
+			//System.out.println("substr - " + substr);
+			String substrlast = str.substring(index+1,str.length());
+			str=substrlast;
+		}
+		return tmpstr;
+		
+    }
 
 
 

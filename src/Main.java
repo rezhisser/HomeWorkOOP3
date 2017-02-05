@@ -1,8 +1,10 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
 		
@@ -39,7 +41,7 @@ public class Main {
 			System.out.println("больше 10 нельзя");
 		}
 		
-	//	gr.delFromGroup(st10);
+		gr.delFromGroup(st10);
 		gr.delFromGroup(st1);
 		
 		System.out.println(gr);		
@@ -61,6 +63,30 @@ public class Main {
 		System.out.println("***");
 		
 		System.out.println("getStudentForRecruitingOfficer - " + Arrays.toString(gr.getStudetnForRecruitingOfficer()));
+		
+		
+		
+		try {
+			gr.SaveToFile("a.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+		System.out.println("******");
+		
+		Group gr2 = new Group();
+		gr.LoadFile("a.txt", gr2);
+		
+		
+		System.out.println("gr2 - " + gr2);	
+		
+		String str = "5;5;8;female;Irina;Khivrenko;";
+		
+		System.out.println("////");
+		
+		System.out.println(Arrays.toString(gr.GetElementStringLine(str)));
+		
+		
+		
 		
 		
 		

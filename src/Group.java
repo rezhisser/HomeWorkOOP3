@@ -3,29 +3,35 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 
 public class Group implements RecruitingOfficer {
-	private Student [] st = new Student [10];
+	//private Student [] st = new Student [10];
+	private ArrayList <Student> st = new ArrayList<Student>(10);
 
 	public Group() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
-	
-	
+	public Group(ArrayList<Student> st) {
+		super();
+		this.st = st;
+
+	}
+
+	/*
 	public Group(Student[] st) {
 		super();
 		this.st = st;
 	}
-
-
-
-
-
+	*/
+	
+	/*
 	protected void addStudent (Student student){
 		for (int i = 0; i < st.length+1; i++) {
 			if(st[i] != null){
@@ -38,6 +44,20 @@ public class Group implements RecruitingOfficer {
 		}
 
 	}
+	*/
+	protected void addStudent (Student student) throws MyExeption{
+		if(st.size() <10){
+			st.add(student);
+		}
+		else{
+			System.out.println("переполнение");
+			//throw new MyExeption();
+		}
+		
+		
+	}
+	
+	/*
 	protected void delFromGroup (Student student){
 		for (int i = 0; i < st.length; i++) {
 			if(st[i] != null && st[i].equals(student)){
@@ -46,7 +66,13 @@ public class Group implements RecruitingOfficer {
 		}
 		
 	}
+	*/
+	protected void delFromGroup (Student student){
+		st.remove(student);
+	}
 	
+	
+	/*
 	protected Student [] searchStudent (String str, CriterionSortSearch cr){
 		
 		int count = 0;
@@ -72,7 +98,26 @@ public class Group implements RecruitingOfficer {
 		return stud;
 		
 	}
+	*/
+	protected ArrayList <Student> searchStudent (String str, CriterionSortSearch cr){
+		
+		ArrayList <Student> stud = new ArrayList<Student>();
+		for (Student student : st) {
+			if (student.equals(str, cr)){
+				stud.add(student);
+			}
+		}
+		if (stud.size()==0){
+			System.out.println("нет такого студента - критерий поиска: " + cr + ", значение: " + str);
+		}
+		
+		
+		return stud;
+	}
 	
+	
+	
+	/*
 	protected Student [] searchStudent (int value, CriterionSortSearch cr){
 
 		int count = 0;
@@ -93,6 +138,21 @@ public class Group implements RecruitingOfficer {
 		return stud;
 		
 	}
+	
+	*/
+	
+	protected ArrayList <Student> searchStudent (int value, CriterionSortSearch cr){
+		
+		ArrayList <Student> stud = new ArrayList<Student>();
+		for (Student student : st) {
+			if (student.equals(value, cr)){
+				stud.add(student);
+			}
+		}
+		return stud;
+	}
+	
+	/*
 	
 	protected void sort (){
 		Arrays.sort(st,(a,b) ->chekNull(a,b)==2?a.getSecondName().compareTo(b.getSecondName()):chekNull(a,b));
@@ -126,6 +186,47 @@ public class Group implements RecruitingOfficer {
 		return 2;
 
 	}
+	
+	*/
+	
+	protected void sort (){
+		Comparator<Student> compareStudent = new Comparator<Student>() {
+
+			@Override
+			public int compare(Student o1, Student o2) {
+				String str1 = o1.getFirstName();
+		        String str2 = o2.getFirstName();
+		       
+		        return str1.compareTo(str2);
+			}
+		};
+		
+		Collections.sort(st, compareStudent);
+		
+	}
+	
+	/*
+	
+	protected void sort (CriterionSortSearch cr){
+		
+		if (cr == cr.FirstName){
+			
+		}
+		else if (cr == cr.SecondName){
+			
+		}
+		else if (cr == cr.Gender){
+			
+		}
+		else if (cr == cr.Age){
+			
+		}
+		
+	}
+	
+	*/
+	
+	/*
 
 	@Override
 	public Student[] getStudetnForRecruitingOfficer() {
@@ -156,6 +257,22 @@ public class Group implements RecruitingOfficer {
 		return stud;
 	}
 	
+	*/
+	
+	@Override
+	public ArrayList <Student> getStudetnForRecruitingOfficer() {
+		
+		ArrayList <Student> stud = new ArrayList<Student>();
+		for (Student student : st) {
+			if (student.getAge() >=18){
+				stud.add(student);
+			}
+		}
+		return stud;
+		
+	}
+	
+	
     public void SaveToFile(String path) throws FileNotFoundException {
         try (PrintWriter pw = new PrintWriter(path)) {
             for (Student student : st) {
@@ -174,7 +291,7 @@ public class Group implements RecruitingOfficer {
         }
     }
     
-    public void LoadFile (String path, Group gr){
+    public void LoadFile (String path, Group gr) throws MyExeption{
     	
     	try(BufferedReader f =new BufferedReader(new FileReader(path))){
     			String str="";
@@ -197,6 +314,9 @@ public class Group implements RecruitingOfficer {
     			}
     }
     
+    /* 
+     * вместо этого метода есть split()
+     * 
     protected String [] GetElementStringLine (String str){
     	int count = 0;
 		for (char string : str.toCharArray()) {
@@ -218,6 +338,8 @@ public class Group implements RecruitingOfficer {
 		return tmpstr;
 		
     }
+    
+    */
 
 
 

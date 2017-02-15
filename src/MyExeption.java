@@ -3,8 +3,11 @@ public class MyExeption extends Exception {
 
 	@Override
 	public String toString() {
-		return "MyExeption []";
+		String str = "больше 10 нельзя";
+		return str;
 	}
+	
+	
 
 	
 }

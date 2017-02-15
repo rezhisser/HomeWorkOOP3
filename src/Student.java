@@ -1,5 +1,6 @@
+import java.util.Comparator;
 
-public class Student extends Human{
+public class Student extends Human implements Comparator<Student>{
 	private int group;
 	private int course;
 	public Student() {
@@ -53,11 +54,23 @@ public class Student extends Human{
 	}
 	
 	
+	
+	
 	@Override
 	public String toString() {
 		return "Student [group=" + group + ", course=" + course + ", getAge()=" + getAge() + ", getGender()="
 				+ getGender() + ", getFirstName()=" + getFirstName() + ", getSecondName()=" + getSecondName() + "]";
 	}
+	@Override
+	public int compare(Student o1, Student o2) {
+		// TODO Auto-generated method stub
+		return o2.secondName.compareTo(o1.secondName);
+	}
+
+
+	
+	
+
 
 	
 

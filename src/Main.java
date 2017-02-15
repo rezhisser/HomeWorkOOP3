@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Main {
 
@@ -19,11 +20,12 @@ public class Main {
 		Student st8 = new Student(19, "male", "Vadym", "Lubatsky", 5, 5);
 		Student st9 = new Student(8, "female", "Irina", "Khivrenko", 5, 5);
 		Student st10 = new Student(1, "male", "Vadym", "Shevchnko", 5, 5);
-		Student st11 = new Student(1, "male", "Vadym", "Shevchnko", 5, 5);
+		Student st11 = new Student(1, "male", "Vadym", "Shevchnko123", 5, 5);
 		
 		
 		Group gr = new Group();
-		try{
+		
+		try {
 		gr.addStudent(st1);
 		gr.addStudent(st2);
 		gr.addStudent(st3);
@@ -36,23 +38,41 @@ public class Main {
 		gr.addStudent(st10);
 		
 		gr.addStudent(st11);
+		gr.addStudent(st8);
+		
+		} catch (MyExeption e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(gr);	
+		
+		/*
 		}
 		catch(ArrayIndexOutOfBoundsException e){
 			System.out.println("больше 10 нельзя");
 		}
+		*/
 		
 		gr.delFromGroup(st10);
 		gr.delFromGroup(st1);
 		
-		System.out.println(gr);		
-		System.out.println("search - " + Arrays.toString(gr.searchStudent("Petrenk", CriterionSortSearch.SecondName)));
-		System.out.println("search - " + Arrays.toString(gr.searchStudent(18, CriterionSortSearch.Age)));
 		
+		
+		System.out.println(gr);		
+		
+		
+		System.out.println("search - " + (gr.searchStudent("Petrenk", CriterionSortSearch.SecondName)));
+		System.out.println("search - " + (gr.searchStudent(18, CriterionSortSearch.Age)));
+		
+		
+		
+	
 		gr.sort();
 		
 		System.out.println(gr);
 		
-		
+		/*
 		
 		gr.sort(CriterionSortSearch.Age);
 		System.out.println(gr);
@@ -62,10 +82,12 @@ public class Main {
 		
 		System.out.println("***");
 		
-		System.out.println("getStudentForRecruitingOfficer - " + Arrays.toString(gr.getStudetnForRecruitingOfficer()));
+		*/
+		
+		System.out.println("getStudentForRecruitingOfficer - " + (gr.getStudetnForRecruitingOfficer()));
 		
 		
-		
+		// сохраниение группы студентов в файл
 		try {
 			gr.SaveToFile("a.txt");
         } catch (FileNotFoundException e) {
@@ -73,17 +95,20 @@ public class Main {
         }
 		System.out.println("******");
 		
+		
+		//создание группы из файла
 		Group gr2 = new Group();
-		gr.LoadFile("a.txt", gr2);
+		try {
+			gr.LoadFile("a.txt", gr2);
+		} catch (MyExeption e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		System.out.println("gr2 - " + gr2);	
 		
-		String str = "5;5;8;female;Irina;Khivrenko;";
-		
-		System.out.println("////");
-		
-		System.out.println(Arrays.toString(gr.GetElementStringLine(str)));
+	
 		
 		
 		

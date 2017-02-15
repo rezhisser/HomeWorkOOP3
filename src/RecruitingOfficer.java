@@ -1,6 +1,9 @@
+import java.util.ArrayList;
 
 public interface RecruitingOfficer {
 	
-	Student [] getStudetnForRecruitingOfficer();
+//	Student [] getStudetnForRecruitingOfficer();
+	ArrayList <Student> getStudetnForRecruitingOfficer();
+	
 
 }
